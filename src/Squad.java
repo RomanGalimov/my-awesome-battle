@@ -4,7 +4,7 @@ import java.util.Random;
  * Created by egor__000 on 21.11.2016.
  */
 public class Squad implements Cloneable{
-    String name;
+    String name; //почему нет модификаторов доступа? тут действительно нужен package-local?
     Warrior[] warriors;
 
     public Squad(String name, Warrior[] warriors) {
@@ -20,7 +20,7 @@ public class Squad implements Cloneable{
         this.name = name;
     }
 
-    public Warrior getRandomWarrior(){
+    public Warrior getRandomWarrior(){ //сложная реализация
         Random r = new Random();
         int size = warriors.length;
         int count = 0;
@@ -61,7 +61,7 @@ public class Squad implements Cloneable{
 
     @Override
     public String toString() {
-        StringBuffer result = new StringBuffer("Squad \"");
+        StringBuffer result = new StringBuffer("Squad \""); //StringBuffer имеет низкую производительность из-за дополнительной потокобезопасной синхронизации. Рекомендуется использовать StringBuilder
         result.append(name);
         result.append("\" {");
         int size = warriors.length;
@@ -69,7 +69,7 @@ public class Squad implements Cloneable{
             if (i > 0) result.append(", ");
             result.append(warriors[i].toString());
         }
-        result.append("}");
+        result.append("}");//можно было просто использовать Arrays.toString(warriors)
         return result.toString();
     }
 }

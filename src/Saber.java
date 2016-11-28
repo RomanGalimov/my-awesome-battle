@@ -44,7 +44,7 @@ public class Saber implements Warrior {
         } catch (CloneNotSupportedException e) {
             throw new RuntimeException();
         }
-        saber.name = new String(name);
+        saber.name = new String(name); //нет необходимости клонировать строки.
         return saber;
     }
 }
